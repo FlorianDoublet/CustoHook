@@ -3,13 +3,13 @@ from hooks_files import *
 from hooks_declare import *
 
 hooks_folder = "hooks/"
-server_profile = "profiles/server/profile.xml"
-client_profile = "profiles/client/profile.xml"
+server_profile_path = "profiles/server/profile.xml"
+client_profile_path = "profiles/client/profile.xml"
 refactor_jar = "refactor.jar"
 
 def srv_refactor(commit_msg=None):
-	refractor = get_root_directory() + hooks_folder + refractor_jar
-	srv_profile = get_root_directory() + hooks_folder + server_profile
+	refractor = get_root_directory() + hooks_folder + refactor_jar
+	srv_profile = get_root_directory() + hooks_folder + server_profile_path
 	folder = get_root_directory()
 
 	os.system("java -jar " + refractor + " " + srv_profile + " " + folder)
@@ -21,8 +21,8 @@ def srv_refactor(commit_msg=None):
 	
 	
 def user_refactor():
-	refractor = get_root_directory() + hooks_folder + refractor_jar
-	client_profile = get_root_directory() + hooks_folder + client_profile
+	refractor = get_root_directory() + hooks_folder + refactor_jar
+	client_profile = get_root_directory() + hooks_folder + client_profile_path
 	folder = get_root_directory()
 
 	os.system("java -jar " + refractor + " " + client_profile + " " + folder)

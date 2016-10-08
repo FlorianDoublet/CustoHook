@@ -4,16 +4,20 @@ import os
 import sys
 import subprocess
 import time
+from hooks_refactor import *
 
 bashrc_path = os.path.expanduser("~/.bashrc")
 bashrc_function_path = "hooks/bashrc_function"
-files_to_ignore = ["hooks/__pycache__/"]
+files_to_ignore = ["hooks/__pycache__/", "hooks/profiles/client/"]
 
 def main(argv):
 	#adding the git function and/or the path of our project into
 	add_git_function()
 	#ignore unwanted folder or file to be pushed
 	gitignore_add_files(files_to_ignore)
+
+	#we proceed to the first user_refactor
+	user_refactor()
 
 	#we ask to the user to run source ~/.bashrc
 	print("You now have to run 'source ~/.bashrc' in your shell")

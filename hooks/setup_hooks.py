@@ -7,13 +7,11 @@ import time
 
 bashrc_path = os.path.expanduser("~/.bashrc")
 bashrc_function_path = "hooks/bashrc_function"
-files_to_ignore = [ "hooks/.tmp_refac/", "hooks/__pycache__/"]
+files_to_ignore = ["hooks/__pycache__/"]
 
 def main(argv):
 	#adding the git function and/or the path of our project into
 	add_git_function()
-	#create the required conf files
-	create_conf_files()
 	#ignore unwanted folder or file to be pushed
 	gitignore_add_files(files_to_ignore)
 
@@ -54,10 +52,6 @@ def add_directory_in_git_function(directory_path, file_str):
 					print("new_line : " + new_line)
 					bashrc[i] = new_line
 				return bashrc
-
-def create_conf_files():
-	get_or_create_tmp_folder()
-	create_unpushed_commit_file()
 
 def gitignore_add_files(list_of_files):
 	gitignore_path = get_root_directory() + ".gitignore"

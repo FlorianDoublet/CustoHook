@@ -2,11 +2,17 @@ from hooks_util import *
 from hooks_files import *
 from hooks_declare import *
 
+hooks_folder = "hooks/"
+server_profile = "profiles/server/profile.xml"
+client_profile = "profiles/client/profile.xml"
+refactor_jar = "refactor.jar"
+
 def srv_refactor(commit_msg=None):
-	
-	#TODO : le refactoring server
-	#Du coup je fait un mock pour le moment
-	os.system("python3 mock_refac_srv.py")
+	refractor = get_root_directory() + hooks_folder + refractor_jar
+	srv_profile = get_root_directory() + hooks_folder + server_profile
+	folder = get_root_directory()
+
+	os.system("java -jar " + refractor + " " + srv_profile + " " + folder)
 	
 	#the rebased commit (if we have to)
 	if commit_msg :
@@ -15,9 +21,11 @@ def srv_refactor(commit_msg=None):
 	
 	
 def user_refactor():
-	#TODO : le user refactoring
-	#Du coup je fait un mock pour le moment
-	os.system("python3 mock_refac_usr.py")
+	refractor = get_root_directory() + hooks_folder + refractor_jar
+	client_profile = get_root_directory() + hooks_folder + client_profile
+	folder = get_root_directory()
+
+	os.system("java -jar " + refractor + " " + client_profile + " " + folder)
 	
 	
 	#adding all refactored files

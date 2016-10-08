@@ -9,7 +9,9 @@ def push_hook(argv):
 	print("push hook")
 	
 	#first, pre_push operations
-	pre_push()
+	#pre_push()
+
+	git_reset_head_hard(1)
 
 	res = execute_git_cmd(argv)
 	
